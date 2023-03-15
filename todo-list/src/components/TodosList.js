@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const TodosList = ({ todos, setTodos, setEditTodo }) => {
     const handleComplete = (todo) => {
         setTodos(
@@ -12,7 +13,7 @@ const TodosList = ({ todos, setTodos, setEditTodo }) => {
         )
     }
 
-    const handleEdit = () => {
+    const handleEdit = ({id}) => {
         const findTodo = todos.find((todo) => todo.id === id);
         setEditTodo(findTodo)
     }
@@ -26,7 +27,7 @@ const TodosList = ({ todos, setTodos, setEditTodo }) => {
         <input
           type="text"
           value={todo.title}
-          className="list"
+          className={`list ${todo.completed ? 'complete' : ""}`}
           onChange={(event) => event.preventDefault()}
         />
         <div>
